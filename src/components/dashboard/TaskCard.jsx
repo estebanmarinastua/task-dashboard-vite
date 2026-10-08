@@ -12,9 +12,9 @@ const stateStyles = {
   Bloqueada: 'bg-red-500/15 text-red-300 border-red-500/30',
 }
 
-export default function TaskCard({ task }) {
+export default function TaskCard({ task, onOpen, onToggleComplete }) {
   return (
-    <article className="group overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/80 p-5 shadow-lg shadow-slate-950/25 transition-all duration-300 hover:-translate-y-1 hover:border-slate-700 hover:shadow-xl hover:shadow-cyan-950/20">
+    <article className="group overflow-hidden rounded-3xl border border-slate-800 bg-slate-900/80 p-5 shadow-lg shadow-slate-950/25 transition-all duration-300 hover:-translate-y-1 hover:border-slate-700 hover:shadow-xl hover:shadow-cyan-950/20">
       <div className="mb-4 flex items-start justify-between gap-3">
         <div className="min-w-0">
           <h3 className="truncate text-lg font-semibold text-white">{task.title}</h3>
@@ -52,18 +52,43 @@ export default function TaskCard({ task }) {
         ))}
       </div>
 
+      <div className="mb-4 grid grid-cols-2 gap-2 text-xs text-slate-400">
+        <div className="rounded-xl border border-slate-800 bg-slate-950/50 px-2 py-1.5">
+          <span className="block text-[10px] uppercase tracking-[0.1em] text-slate-500">
+            Asignado
+          </span>
+          <span className="mt-1 block text-slate-200">{task.assignee}</span>
+        </div>
+        <div className="rounded-xl border border-slate-800 bg-slate-950/50 px-2 py-1.5">
+          <span className="block text-[10px] uppercase tracking-[0.1em] text-slate-500">
+            Límite
+          </span>
+          <span className="mt-1 block text-slate-200">{task.dueDate}</span>
+        </div>
+      </div>
+
       <div className="flex items-center justify-between border-t border-slate-800 pt-4">
         <div className="flex items-center gap-2 text-xs text-slate-400">
           <span className="h-2.5 w-2.5 rounded-full bg-cyan-400" />
           ID #{task.id}
         </div>
 
-        <button
-          type="button"
-          className="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1.5 text-xs font-semibold text-cyan-200 transition-colors hover:bg-cyan-500/20"
-        >
-          Ver detalles
-        </button>
+        <div className="flex gap-2">
+          <button
+            type="button"
+            onClick={() => onToggleComplete(task.id)}
+            className="rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1.5 text-[11px] font-semibold text-emerald-200 transition-colors hover:bg-emerald-500/20"
+          >
+            {task.state === 'Completada' ? 'Reabrir' : 'Completar'}
+          </button>
+          <button
+            type="button"
+            onClick={() => onOpen(task)}
+            className="rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1.5 text-[11px] font-semibold text-cyan-200 transition-colors hover:bg-cyan-500/20"
+          >
+            Detalles
+          </button>
+        </div>
       </div>
     </article>
   )

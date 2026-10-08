@@ -1,21 +1,29 @@
-export const tasks = [
+export const initialTasks = [
   {
     id: 1,
     title: 'Implementar autenticación OAuth',
     description:
       'Configurar el flujo de autenticación para usuarios externos y reforzar la seguridad del acceso a la API.',
-    priority: 'Alta',
+    priority: 'Crítica',
     state: 'En progreso',
     labels: ['Backend', 'Seguridad', 'API'],
+    assignee: 'María López',
+    dueDate: '2026-10-12',
+    effort: '8h',
+    project: 'Plataforma API',
   },
   {
     id: 2,
     title: 'Rediseñar dashboard de métricas',
     description:
       'Actualizar la vista principal de reportes para mejorar legibilidad, carga y jerarquía visual.',
-    priority: 'Media',
+    priority: 'Alta',
     state: 'Pendiente',
     labels: ['Frontend', 'UX'],
+    assignee: 'Sofía Varela',
+    dueDate: '2026-10-16',
+    effort: '6h',
+    project: 'Analytics',
   },
   {
     id: 3,
@@ -25,6 +33,10 @@ export const tasks = [
     priority: 'Crítica',
     state: 'Bloqueada',
     labels: ['Bug', 'Pagos', 'Producción'],
+    assignee: 'Carlos Ruiz',
+    dueDate: '2026-10-09',
+    effort: '10h',
+    project: 'Finanzas',
   },
   {
     id: 4,
@@ -34,6 +46,10 @@ export const tasks = [
     priority: 'Alta',
     state: 'Completada',
     labels: ['Backend', 'Performance'],
+    assignee: 'Lucas Torres',
+    dueDate: '2026-10-07',
+    effort: '7h',
+    project: 'Infraestructura',
   },
   {
     id: 5,
@@ -43,6 +59,10 @@ export const tasks = [
     priority: 'Media',
     state: 'En progreso',
     labels: ['DevOps', 'QA'],
+    assignee: 'Nora Flores',
+    dueDate: '2026-10-14',
+    effort: '5h',
+    project: 'Release',
   },
   {
     id: 6,
@@ -52,5 +72,23 @@ export const tasks = [
     priority: 'Baja',
     state: 'Pendiente',
     labels: ['Documentación', 'API'],
+    assignee: 'Diana Salas',
+    dueDate: '2026-10-18',
+    effort: '4h',
+    project: 'Developer Experience',
   },
 ]
+
+export const priorityRank = {
+  Crítica: 5,
+  Alta: 4,
+  Media: 3,
+  Baja: 2,
+}
+
+export const stateRank = {
+  Pendiente: 1,
+  'En progreso': 2,
+  Bloqueada: 3,
+  Completada: 4,
+}
